@@ -156,9 +156,9 @@ const Home = () => {
                     {/* Section 1 */}
                     <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
                         {/* Placeholder for image */}
-                        <div data-aos="fade-right" className="w-full h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-xl">
+                        <div data-aos="fade-right" className="w-full h-64  rounded-xl flex items-center justify-center text-gray-500 text-xl">
                             {/* Image will be added here */}
-                            <img src="../../public/Img/qqq.jpg" alt="" className='rounded-2xl' />
+                          <img src="/Img/qqq.jpg" alt="" className="rounded-2xl" />
                         </div>
                         {/* Text content */}
                         <div data-aos="fade-left">
@@ -179,9 +179,9 @@ const Home = () => {
                             </p>
                         </div>
                         {/* Placeholder for image */}
-                        <div data-aos="fade-left" className="w-full h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-xl">
+                        <div data-aos="fade-left" className="w-full h-64  rounded-xl flex items-center justify-center text-gray-500 text-xl">
                             {/* Image will be added here */}
-                            <img src="../../public/Img/Rakib.pgc.jpg" alt=""  className='rounded-2xl '/>
+                         <img src="/Img/Rakib.pgc.jpg" alt="" className="rounded-2xl" />
                         </div>
                     </div>
 

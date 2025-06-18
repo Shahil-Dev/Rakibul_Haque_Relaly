@@ -29,7 +29,7 @@ const Hero = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }}
                     >
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        <h1 className="text-4xl sm:text-5xl mt-10 lg:text-6xl font-extrabold leading-tight mb-6">
                             Voice for the&nbsp;
                             <span className="bg-gradient-to-r from-purple-400 to-violet-600 bg-clip-text text-transparent">
                                 People

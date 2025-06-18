@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 const Home = () => {
     return (
         <div>
-        
-           <div>
-             <Hero />
-           </div>
+
+            <div>
+                <Hero />
+            </div>
             <br /><br /><br />
             <div className='max-w-6xl mx-auto'>
                 <div className='mx-4 md:mx-0'>
@@ -92,6 +92,10 @@ const Home = () => {
                             <img className='rounded-[5px] shadow-xl' src="/Img/UFG-main.jpg" alt="Unity For Growth" />
                         </div>
                     </section>
+
+
+
+
                 </div>
             </div>
 
@@ -139,13 +143,55 @@ const Home = () => {
                             />
                         </div>
                         <div className="md:w-1/2">
-                            <h3 className="text-3xl font-bold mb-4 text-violet-400">Ramadan Food Packs for Victims' Families</h3>
+                            <h3 className="text-3xl font-bold mb-4 text-violet-400">Ramadan Food Packs for  July Victims' Families</h3>
                             <p className="text-gray-300 text-lg">
                                 Honoring the sacrifice of those affected by the historic July uprising, Rakibul Hoque Helaly took the noble initiative of distributing Ramadan food packs to the families of the martyrs and the injured. This thoughtful act not only brought essential aid but also conveyed solidarity and respect to families who carry the weight of loss and struggle. His actions demonstrate how genuine empathy can manifest in impactful service to those who need it most.
                             </p>
                         </div>
                     </div>
+
+                    <br /><br /><br />
+
+
+                    {/* Section 1 */}
+                    <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
+                        {/* Placeholder for image */}
+                        <div data-aos="fade-right" className="w-full h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-xl">
+                            {/* Image will be added here */}
+                            <img src="../../public/Img/qqq.jpg" alt="" className='rounded-2xl' />
+                        </div>
+                        {/* Text content */}
+                        <div data-aos="fade-left">
+                            <h3 className="text-3xl font-bold mb-4 text-violet-400">Standing Beside the People</h3>
+                            <p className="text-white text-lg leading-relaxed">
+                                In the devastating floods of 2024 that struck multiple areas in Cumilla, Rakibul Haque Helaly emerged as a beacon of hope for the affected communities. With a group of dedicated volunteers, he organized and led a relief distribution mission aimed at supporting flood victims. The image clearly captures the sincerity and readiness of the team—some wearing life jackets, others holding emergency supplies—all united by a single goal: to serve humanity. Braving harsh weather and muddy roads, Rakibul and his team distributed essential items including food, water, medicine, and daily necessities directly to the flood-hit areas. This noble effort was entirely social and voluntary. More than just distributing aid, Rakibul’s initiative also lifted the morale of many distressed families. His leadership and compassion shone through each step of the mission. The photo not only documents a moment of humanitarian service but also reflects the spirit of unity, resilience, and courage. Through this selfless act, Rakibul set an inspiring example for the youth and proved that true leadership is measured in action, not words. His dedication to social welfare reminds us that in times of crisis, standing by each other is what makes us truly human. The 2024 flood relief operation will remain a proud chapter in Rakibul’s life and a symbol of hope for many. Future generations can look back at this moment as a lesson in empathy, service, and responsibility.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        {/* Text content */}
+                        <div data-aos="fade-right">
+                            <h3 className="text-3xl font-bold mb-4 text-violet-400">Voice of Gratitude and Inspiration: Rakibul Haque Helaly’s Farewell Speech at Patiya Government College, 2023</h3>
+                            <p className="text-white text-lg leading-relaxed">
+                              Public speaking is one of the most essential life skills a person can develop. It not only enhances communication abilities but also builds confidence, leadership, and the power to influence. In 2023, during the farewell ceremony of the HSC batch at Patiya Government College, Rakibul Haque Helaly, a proud student of the institution, delivered a memorable speech that touched the hearts of many. Standing at the podium in traditional attire, Rakibul exemplified grace, clarity, and emotional depth in his delivery. His speech reflected gratitude, vision, and deep respect for his teachers and fellow classmates. Events like this not only mark the end of a chapter but also give students like Rakibul an opportunity to express their journey, dreams, and hopes. Through his poised presentation, Rakib proved how powerful public speaking can be in conveying ideas and inspiring others. His words carried sincerity and wisdom far beyond his age. Rakibul's performance showed his ability to speak not just from the mind, but from the heart. His command over language and calm presence on stage won the admiration of both teachers and students. Moments like these are milestones in a student’s life and a reflection of character and growth. Rakibul’s speech will surely be remembered by many, as it stood as a testament to his confidence, communication skill, and deep connection with his college. He has proven himself not only as a good student but also as a promising youth with the courage to speak up and lead by example.
+                            </p>
+                        </div>
+                        {/* Placeholder for image */}
+                        <div data-aos="fade-left" className="w-full h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-xl">
+                            {/* Image will be added here */}
+                            <img src="../../public/Img/Rakib.pgc.jpg" alt=""  className='rounded-2xl '/>
+                        </div>
+                    </div>
+
+
+
+
+
+
                 </div>
+
             </section>
 
             <div className='bg-[#1E1E2F] py-16 px-6' data-aos="fade-up" data-aos-duration="2000">

@@ -1,112 +1,114 @@
-import Swal from "sweetalert2";
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BlogDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [blog, setBlog] = useState(null);
-  const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [actionType, setActionType] = useState(""); // "delete" or "update"
   const [passwordInput, setPasswordInput] = useState("");
-  const [actionType, setActionType] = useState("");
 
   const PASSWORD = "Rakib_Blog_1234";
 
   useEffect(() => {
-    fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`)
+    fetch(`https://blog-backend-chi-beryl.vercel.app/blogs/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Blog not found");
         return res.json();
       })
       .then(data => setBlog(data))
-      .catch(err => setError(err.message));
+      .catch(err => Swal.fire("Error", err.message, "error"))
+      .finally(() => setLoading(false));
   }, [id]);
 
-  const handleDelete = () => {
+  const confirmPassword = () => {
+    if (passwordInput === PASSWORD) {
+      setShowPasswordModal(false);
+      if (actionType === "delete") {
+        deleteBlog();
+      } else if (actionType === "update") {
+        navigate(`/updateBlog/${id}`);
+      }
+    } else {
+      Swal.fire("❌ Wrong Password", "Incorrect password entered.", "error");
+    }
+  };
+
+  const deleteBlog = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`, {
-          method: "DELETE"
+        fetch(`https://blog-backend-chi-beryl.vercel.app/blogs/${id}`, {
+          method: "DELETE",
         })
           .then(res => res.json())
           .then(() => {
             Swal.fire("Deleted!", "Your blog has been deleted.", "success");
             navigate("/blogs");
           })
-          .catch(err => {
-            Swal.fire("Error", "Something went wrong!", "error");
-            console.error(err);
-          });
+          .catch(() => Swal.fire("Error", "Failed to delete blog.", "error"));
       }
     });
   };
 
-  const handleUpdate = () => {
-    navigate(`/updateBlog/${id}`);
-    Swal.fire("🔄 Update Mode", "You can now update the blog.", "info");
-  };
-
-  const checkPasswordAndProceed = () => {
-    if (passwordInput === PASSWORD) {
-      setShowModal(false);
-      if (actionType === "delete") {
-        handleDelete();
-      } else if (actionType === "update") {
-        handleUpdate();
-      }
-    } else {
-      Swal.fire("❌ Wrong Password", "The password you entered is incorrect.", "error");
-    }
-  };
-
-  if (error) return <div className="text-red-500">❌ {error}</div>;
-  if (!blog) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
+  if (!blog) return <div>Blog not found.</div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 mt-8 py-8">
-      <img src={blog.coverImage} alt={blog.title} className="w-full rounded-xl mb-4" />
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <img src={blog.coverImage} alt={blog.title} className="rounded-lg w-full mb-4" />
       <h1 className="text-3xl font-bold mb-2">{blog.title}</h1>
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-gray-500 mb-4">
         {blog.category} | {new Date(blog.date).toDateString()}
       </p>
-      <p className="text-lg">{blog.description}</p>
+      <p className="mb-6">{blog.description}</p>
 
-      {/* Action Buttons */}
-      <div className="flex gap-4 mt-6">
-        <button onClick={() => { setActionType("delete"); setShowModal(true); }} className="btn bg-red-600 text-white hover:bg-red-700">
+      <div className="flex gap-4">
+        <button
+          onClick={() => {
+            setActionType("delete");
+            setShowPasswordModal(true);
+          }}
+          className="btn btn-danger"
+        >
           🗑️ Delete
         </button>
-        <button onClick={() => { setActionType("update"); setShowModal(true); }} className="btn bg-blue-600 text-white hover:bg-blue-700">
+        <button
+          onClick={() => {
+            setActionType("update");
+            setShowPasswordModal(true);
+          }}
+          className="btn btn-primary"
+        >
           ✏️ Update
         </button>
       </div>
 
-      {/* Password Modal using Daisy UI */}
-      {showModal && (
-        <dialog id="my_modal" className="modal modal-open">
+      {showPasswordModal && (
+        <dialog open className="modal">
           <div className="modal-box">
-            <h3 className="font-bold text-lg mb-4">🔐 Enter Password to Continue</h3>
+            <h3 className="font-bold text-lg mb-4">Enter Password</h3>
             <input
               type="password"
               value={passwordInput}
-              onChange={e => setPasswordInput(e.target.value)}
-              placeholder="Enter password"
+              onChange={(e) => setPasswordInput(e.target.value)}
               className="input input-bordered w-full mb-4"
+              placeholder="Password"
             />
-            <div className="modal-action">
-              <button onClick={checkPasswordAndProceed} className="btn btn-success">
+            <div className="flex justify-end gap-2">
+              <button onClick={confirmPassword} className="btn btn-success">
                 Confirm
               </button>
-              <button onClick={() => setShowModal(false)} className="btn">
+              <button onClick={() => setShowPasswordModal(false)} className="btn">
                 Cancel
               </button>
             </div>

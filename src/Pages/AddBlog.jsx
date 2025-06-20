@@ -36,7 +36,7 @@ const AddBlog = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/add-blog", {
+ const res = await fetch("https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/add-blog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

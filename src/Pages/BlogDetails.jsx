@@ -14,7 +14,7 @@ const BlogDetails = () => {
   const PASSWORD = "Rakib_Blog_1234";
 
   useEffect(() => {
-    fetch(`http://localhost:8000/blogs/${id}`)
+    fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Blog not found");
         return res.json();
@@ -34,7 +34,7 @@ const BlogDetails = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8000/blogs/${id}`, {
+        fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`, {
           method: "DELETE"
         })
           .then(res => res.json())

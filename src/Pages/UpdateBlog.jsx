@@ -20,7 +20,7 @@ const UpdateBlog = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8000/blogs/${id}`)
+    fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -47,7 +47,7 @@ const UpdateBlog = () => {
 
     setLoading(true);
 
-    fetch(`http://localhost:8000/blogs/${id}`, {
+    fetch(`https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

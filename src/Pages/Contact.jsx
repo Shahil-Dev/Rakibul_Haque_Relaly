@@ -10,7 +10,7 @@ const Blogs = () => {
 
     useEffect(() => {
         AOS.init({ duration: 600 });
-        fetch("http://localhost:8000/blogs")
+fetch("https://blog-backend-qxeq88k1b-shahil777s-projects.vercel.app/blogs")
             .then((res) => res.json())
             .then((data) => {
                 setBlogs(data);
